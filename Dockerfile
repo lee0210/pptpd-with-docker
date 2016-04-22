@@ -6,7 +6,7 @@ ADD epel-release-6-8.noarch.rpm epel-release-6-8.noarch.rpm
 RUN rpm -Uvh epel-release-6*.rpm; \
     yum -y update; \
     yum -y upgrade; \
-    yum -y install iptables ppp pptpd; \
+    yum -y install ppp pptpd; \
     yum clean all
 
 ADD ./etc/ppp/options.pptpd /etc/ppp/options.pptpd                                                                                                                                                                                       

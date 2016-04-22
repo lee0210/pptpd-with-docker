@@ -3,10 +3,4 @@ modprobe nf_conntrack_pptp
 modprobe nf_conntrack_proto_gre
 mknod /dev/ppp c 108 0
 sysctl net.ipv4.ip_forward=1
-iptables -t nat -A POSTROUTING -s 192.168.4.0/24 -o eth0 -j MASQUERADE           
-iptables -A INPUT -j ACCEPT                                               
-iptables -A FORWARD -s 192.168.4.0/24 -i ppp+ -p tcp -m tcp --tcp-flags FIN,SYN,RST,ACK SYN -j TCPMSS --set-mss 1300
-iptables -A FORWARD -j ACCEPT                                                    
-service iptables save
-service iptables start
 /usr/sbin/pptpd -f
